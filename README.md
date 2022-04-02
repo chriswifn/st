@@ -1,3 +1,3 @@
 # st 
 
-My config of st
+My build of st.
