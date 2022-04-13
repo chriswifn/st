@@ -130,6 +130,31 @@ static const char *colorname[] = {
   /* special colors */
   [256] = "#1d1f21", /* background */
   [257] = "#c5c8c6", /* foreground */
+
+
+  /* 8 normal colors */
+  // [0] = "#131a1c", /* black   */
+  // [1] = "#e74c4c", /* red     */
+  // [2] = "#6bb05d", /* green   */
+  // [3] = "#e7ac7e", /* yellow  */
+  // [4] = "#5b98a9", /* blue    */
+  // [5] = "#ef7cbb", /* magenta */
+  // [6] = "#7ab3c3", /* cyan    */
+  // [7] = "#d6d6d6", /* white   */
+  //
+  // /* 8 bright colors */
+  // [8]  = "#868888", /* black   */
+  // [9]  = "#e74c4c", /* red     */
+  // [10] = "#6bb05d", /* green   */
+  // [11] = "#e7ac7e", /* yellow  */
+  // [12] = "#5b98a9", /* blue    */
+  // [13] = "#ef7cbb", /* magenta */
+  // [14] = "#7ab3c3", /* cyan    */
+  // [15] = "#d6d6d6", /* white   */
+  //
+  // /* special colors */
+  // [256] = "#131a1c", /* background */
+  // [257] = "#d6d6d6", /* foreground */
 };
 
 
