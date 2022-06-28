@@ -5,8 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Code:style=Regular:size=11:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Fira Code:style=Medium Nerd Font Complete:size=14:antialias=true:autohint=true";
+// static char *font = "Terminus (TTF):pixelsize=24:antialias=true;autohint=true";
+static char *font2 = {
+    "JoyPixels:pixelsize=14:antialias=true:autohint=true"
+};
+static int borderpx = 5;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -107,54 +111,50 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  /* 8 normal colors */
-  [0] = "#1d1f21", /* black   */
-  [1] = "#cc342b", /* red     */
-  [2] = "#198844", /* green   */
-  [3] = "#fba922", /* yellow  */
-  [4] = "#3971ed", /* blue    */
-  [5] = "#a36ac7", /* magenta */
-  [6] = "#3971ed", /* cyan    */
-  [7] = "#c5c8c6", /* white   */
-
-  /* 8 bright colors */
-  [8]  = "#969896", /* black   */
-  [9]  = "#cc342b", /* red     */
-  [10] = "#198844", /* green   */
-  [11] = "#fba922", /* yellow  */
-  [12] = "#3971ed", /* blue    */
-  [13] = "#a36ac7", /* magenta */
-  [14] = "#3971ed", /* cyan    */
-  [15] = "#ffffff", /* white   */
-
   /* special colors */
-  [256] = "#1d1f21", /* background */
-  [257] = "#c5c8c6", /* foreground */
-
-
-  /* 8 normal colors */
-  // [0] = "#131a1c", /* black   */
-  // [1] = "#e74c4c", /* red     */
-  // [2] = "#6bb05d", /* green   */
-  // [3] = "#e7ac7e", /* yellow  */
-  // [4] = "#5b98a9", /* blue    */
-  // [5] = "#ef7cbb", /* magenta */
-  // [6] = "#7ab3c3", /* cyan    */
-  // [7] = "#d6d6d6", /* white   */
+  // [256] = "#1f2227", /* background */
+  // [257] = "#abb2bf", /* foreground */
+  // [0] = "#0e1013", /* black   */
+  // [1] = "#e55561", /* red     */
+  // [2] = "#8ebd6b", /* green   */
+  // [3] = "#cc9057", /* yellow  */
+  // [4] = "#4fa6ed", /* blue    */
+  // [5] = "#bf68d9", /* magenta */
+  // [6] = "#266269", /* cyan    */
+  // [7] = "#2d2223", /* white   */
   //
   // /* 8 bright colors */
-  // [8]  = "#868888", /* black   */
-  // [9]  = "#e74c4c", /* red     */
-  // [10] = "#6bb05d", /* green   */
-  // [11] = "#e7ac7e", /* yellow  */
-  // [12] = "#5b98a9", /* blue    */
-  // [13] = "#ef7cbb", /* magenta */
-  // [14] = "#7ab3c3", /* cyan    */
-  // [15] = "#d6d6d6", /* white   */
+  // [8]  = "#7a818e", /* black   */
+  // [9]  = "#e55561", /* red     */
+  // [10] = "#8ebd6b", /* green   */
+  // [11] = "#cc9057", /* yellow  */
+  // [12] = "#4fa6ed", /* blue    */
+  // [13] = "#bf68d9", /* magenta */
+  // [14] = "#266269", /* cyan    */
+  // [15] = "#dfdfdf", /* white   */
   //
-  // /* special colors */
-  // [256] = "#131a1c", /* background */
-  // [257] = "#d6d6d6", /* foreground */
+  // [256] = "#1f2227", /* background */
+  // [257] = "#abb2bf", /* foreground */
+    [0] = "#fbf1c7", /* hard contrast: #f9f5d7 / soft contrast: #f2e5bc */
+    [1] = "#cc241d", /* red     */
+    [2] = "#98971a", /* green   */
+    [3] = "#d79921", /* yellow  */
+    [4] = "#458588", /* blue    */
+    [5] = "#b16286", /* magenta */
+    [6] = "#689d6a", /* cyan    */
+    [7] = "#7c6f64", /* white   */
+
+    /* more colors can be added after 255 to use with DefaultXX */
+    [8]  = "#928374", /* black   */
+    [9]  = "#9d0006", /* red     */
+    [10] = "#79740e", /* green   */
+    [11] = "#b57614", /* yellow  */
+    [12] = "#076678", /* blue    */
+    [13] = "#8f3f71", /* magenta */
+    [14] = "#427b58", /* cyan    */
+    [15] = "#3c3836", /* white   */
+    [256] = "#1d1f21", /* background */
+    [257] = "#93a1a1", /* foreground */
 };
 
 
@@ -222,6 +222,8 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+static char *cdcmd[] = { "/bin/sh", "-c", "st-changedir", "externalpipe", NULL};
+
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
@@ -238,6 +240,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+    { MODKEY,               XK_d,           externalpipe,   {.v = cdcmd } },
 };
 
 /*
